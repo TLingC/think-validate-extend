@@ -15,6 +15,7 @@ composer require tlingc/think-validate-extend
 应用目录下 `service.php` 添加：
 ```php
 use tlingc\validate\service\ValidateExtendService;
+
 return [
     ValidateExtendService::class,
 ];
@@ -30,6 +31,7 @@ return [
 
 例：设置规则 `inSet:black,white,red`
 > white,black -> pass
+> 
 > yellow,red -> fail
 
 ## 协议

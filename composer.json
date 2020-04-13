@@ -14,7 +14,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "tlingc\\validate\\": "src"
+            "tlingc\\think\\validate\\": "src"
         }
     },
     "minimum-stability": "stable"

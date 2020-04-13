@@ -14,7 +14,7 @@ composer require tlingc/think-validate-extend
 ### 添加服务
 应用目录下 `service.php` 添加：
 ```php
-use tlingc\validate\service\ValidateExtendService;
+use tlingc\think\validate\service\ValidateExtendService;
 
 return [
     ValidateExtendService::class,

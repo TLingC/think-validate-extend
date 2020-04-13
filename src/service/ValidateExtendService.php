@@ -1,5 +1,5 @@
 <?php
-namespace tlingc\validate\service;
+namespace tlingc\think\validate\service;
 
 use think\Service;
 use think\Route;

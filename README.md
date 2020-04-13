@@ -56,6 +56,8 @@ $data = [
   ['name' => 'name3'] //fail
 ];
 ```
+#### string
+验证字段是否为字符串
 
 ## 协议
 MIT

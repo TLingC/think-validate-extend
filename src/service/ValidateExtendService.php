@@ -5,6 +5,8 @@ use think\Service;
 use think\Route;
 use think\Validate;
 
+use think\exception\ValidateException;
+
 class ValidateExtendService extends Service
 {
     public function boot(Route $route)
@@ -29,6 +31,22 @@ class ValidateExtendService extends Service
                 if(sizeof($value) != sizeof(array_unique($value))) return false;
                 return empty(array_diff($value, $set));
             }, ':attribute 集合输入不合法!');
+
+            $validate->extend('arrayValidate', function ($value, $rule, $data, $name, $desc) {
+                $rule = explode(',', $rule);
+
+                $i = 0;
+                foreach($value as $item) {
+                    try {
+                        Validate($rule[0])
+                            ->scene($rule[1])
+                            ->check($item);
+                    } catch (ValidateException $e) {
+                        return $name . '[' . $i . ']' . $e->getError();
+                    }
+                    $i++;
+                }
+            }, ':attribute 数组验证未通过!');
         });
     }
 }

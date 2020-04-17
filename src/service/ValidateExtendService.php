@@ -53,6 +53,15 @@ class ValidateExtendService extends Service
             $validate->extend('string', function ($value) {
                 return is_string($value);
             }, ':attribute 必须是字符串!');
+            
+            $validate->extend('keyEq', function ($value, $set) {
+                if(empty($value)) return true;
+                if (is_string($set)) {
+                    $set = explode(',', $set);
+                }
+                $keys = array_keys($value);
+                return (empty(array_diff($keys, $set)) && empty(array_diff($set, $keys)));
+            }, ':attribute 数组键值不合法!');
         });
     }
 }

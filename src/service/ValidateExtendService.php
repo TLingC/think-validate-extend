@@ -46,6 +46,7 @@ class ValidateExtendService extends Service
                     }
                     $i++;
                 }
+                return true;
             }, ':attribute 数组验证未通过!');
             
             $validate->extend('string', function ($value) {

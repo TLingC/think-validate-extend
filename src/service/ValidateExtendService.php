@@ -36,6 +36,7 @@ class ValidateExtendService extends Service
                 $rule = explode(',', $rule);
 
                 $i = 0;
+                if(count($value) == count($value, 1)) $value = [$value];
                 foreach($value as $item) {
                     try {
                         Validate($rule[0])

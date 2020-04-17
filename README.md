@@ -37,7 +37,7 @@ yellow,red -> fail
 #### arrayValidate
 验证数组内的元素是否能够通过指定验证器的验证场景。适合验证批量提交的使用相同验证规则的数据。
 
-例：设置规则 `arrayValidate:arrayValidate:arrayValidate:app\validate\User,save`
+例：设置规则 `arrayValidate:app\validate\User,save`
 ```
 //app\validate\User 有以下规则
 protected $rule = [

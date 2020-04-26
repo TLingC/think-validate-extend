@@ -13,11 +13,13 @@ class ValidateExtendService extends Service
     {
         Validate::maker(function ($validate) {
             $validate->extend('json', function ($value) {
+                if(empty($value)) return true;
                 json_decode($value);
                 return (json_last_error() === JSON_ERROR_NONE);
             }, ':attribute JSON数据解析失败!');
 
             $validate->extend('money', function ($value) {
+                if(empty($value)) return true;
                 $res = preg_match('/((^[1-9]\d*)|^0)(\.\d{0,2}){0,1}$/', $value);
                 return ($res != 0);
             }, ':attribute 金额输入不合法!');
@@ -33,6 +35,7 @@ class ValidateExtendService extends Service
             }, ':attribute 集合输入不合法!');
 
             $validate->extend('arrayValidate', function ($value, $rule, $data, $name, $desc) {
+                if(empty($value)) return true;
                 $rule = explode(',', $rule);
 
                 $i = 0;
@@ -51,9 +54,10 @@ class ValidateExtendService extends Service
             }, ':attribute 数组验证未通过!');
             
             $validate->extend('string', function ($value) {
+                if(empty($value)) return true;
                 return is_string($value);
             }, ':attribute 必须是字符串!');
-            
+
             $validate->extend('keyEq', function ($value, $set) {
                 if(empty($value)) return true;
                 if (is_string($set)) {
